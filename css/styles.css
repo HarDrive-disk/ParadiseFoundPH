@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    color: white;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    color: white;
+    position: relative;
+}
+
+body::before {
+    content: ''; /* Required for pseudo-elements */
+    position: fixed; /* Fixes the background overlay in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/background.png'); /* Your background image */
+    background-size: cover; /* Ensures the image covers the viewport */
+    background-repeat: no-repeat;
+    filter: blur(2px) brightness(0.5); /* Adds blur and darkens the image */
+}
+
+
+a {
+    transition: color 0.3s;
+}
+
+.logo a {
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo a:hover{
+    color:gold;
+}
+
+.navbar {
+    position: relative;
+    z-index: 1000;
+    border-bottom: solid gold ;
+    background-color:#333;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(121, 121, 121, 0.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-size: 20px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a:hover {
+    color: gold;
+}
+
+.hero {
+    display:flex;
+    position: absolute; 
+    top: 50%;           
+    left: 50%;         
+    transform: translate(-50%, -50%); 
+    z-index: 1;        
+    text-align: center;
+    color: #ffffffa4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+}
+
+.hero a ion-icon{
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.hero h1 {
+    font-size: 60px;    
+    margin-bottom: 30px;
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+.hero h1:hover {
+    text-decoration-color:gold;
+}
+
+.hero p{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.banner {
+    overflow: hidden;
+    height: 800px;
+    position: relative; /* Added */
+}
+
+.banner a{
+    font-size: 20px;
+    }
+
+@-webkit-keyframes slide_animation{
+    0%{left:0vw}
+    10%{left:0vw}
+    20%{left:100vw}
+    30%{left:100vw}
+    40%{left:200vw}
+    50%{left:200vw}
+    60%{left:100vw}
+    70%{left:100vw}
+    80%{left:0vw}
+    90%{left:0vw}
+    100%{left:0vw}
+}
+
+.slide-images {
+    width: 300vw;
+    height: 800px;
+    margin: 0 0 0 -200vw;
+    position: relative;
+    -webkit-animation-name: slide_animation;
+    -webkit-animation-duration: 33s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+    filter: brightness(0.4) blur(5px); 
+    transition: filter 0.5s ease; 
+}
+
+.slide-images:hover {
+    filter: brightness(0.7) blur(0px); 
+}
+
+.img-container {
+    height: 800px;
+    width: 100vw;
+    position: relative;
+    float: left;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.cta-button {    
+    display: flex;
+    justify-content: center;
+    background-color: #215133;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.cta-button ion-icon{
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.cta-button:hover {
+    background-color: #34a853; 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:active {
+    transform: scale(0.95);
+}
+
+
+.API {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 50px;
+    font-size: 50px;
+    position: relative; /* Enables positioning context for children */
+    overflow: hidden; /* Prevents image overflow */
+}
+
+.API .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the whole section */
+    z-index: -1; /* Pushes the image behind other content */
+}
+
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+gmp-map {
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.map-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.map-container h1{
+    justify-content: center;
+}
+
+.map-container p{
+    font-size: 24px;
+}
+
+.map-wrapper {
+    height: 700px;
+    margin-top: 50px;
+    width: 100%; /* Adjust width as needed */
+    overflow: hidden; /* Ensures the border-radius effect works */
+    border-radius: 2rem; /* Apply rounded corners here */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional for styling */
+    border: solid gold 4px;
+
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+    display: block; /* Ensures the map fills the wrapper */
+}
