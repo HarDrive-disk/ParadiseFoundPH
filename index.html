@@ -3,67 +3,284 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TripPlanner</title>
+        <title>ParadiseFound PH</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYPsjWInN7r_EBcV7tQj871BKts8nbhhM&callback=console.debug&libraries=maps,marker&v=beta"></script>
         <link rel="stylesheet" href="css/styles.css">
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <style>
+            #map{
+                color: #333;
+            }
+        </style>
     </head>
     <body>
-            <!--Nav Bar-->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="logo">
-                <a href="index.html"> TripPlanner</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="flights.html">Flights</a></li>
-                <li><a href="places.html">Places</a></li>
-                <li><a href="hotels.html">Hotels</a></li>
-                <li><a href="aboutUs.html">About</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!--Banner-->
-    <div class="banner">
-        <div class="slide-images">
-            <div class="img-container">
-                <img src="img/banner-1.jpg" alt="Slide 1">
-            </div>
-            <div class="img-container">
-                <img src="img/banner-2.jpg" alt="Slide 2">
-            </div>
-            <div class="img-container">
-                <img src="img/banner-3.jpg" alt="Slide 3">
-            </div>
-        </div>
-        <div class="hero">
-            <h1> PLAN, BOOK, EXPLORE! </h1>
-            <p> Ease your planning for a seamless travel~ </p>
-            <a href="Book.html" class="cta-button">Book Now <ion-icon name="cart-outline"></ion-icon></a>
-        </div>
-    </div>
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script src="script.js"></script>
 
-    <section class="API">    
-        <div class="map-container">
-            <h1>FIND YOUR DESTINATION</h1>
-            <p>Use this map to find places you wanted to visit!</p>
-            <div class="map-wrapper">
-                <gmp-map class="map" center="11.9674,121.9248" zoom="15" map-id="DEMO_MAP_ID">
-                    <gmp-advanced-marker position="11.9674,121.9248" title="Boracay"></gmp-advanced-marker>
-                </gmp-map>                
+        <!--Nav Bar-->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <a href="index.html"> ParadiseFound PH</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="places.html">Places</a></li>
+                    <li><a href="aboutUs.html">About</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Banner-->
+        <div class="banner">
+            <div class="slide-images">
+                <div class="img-container">
+                    <img src="img/banner-1.jpg" alt="Slide 1">
+                </div>
+                <div class="img-container">
+                    <img src="img/banner-2.jpg" alt="Slide 2">
+                </div>
+                <div class="img-container">
+                    <img src="img/banner-3.jpg" alt="Slide 3">
+                </div>
+            </div>
+            <div class="hero">
+                <h1> Dive Into Paradise! </h1>
+                <p> Uncover the authentic charm of Philippine Beaches </p>
+                <a href="Book.html" class="cta-button">Let’s Go!</a>
             </div>
         </div>
+
+        <section class="introduction">
+            <div class="intro-wrapper">
+                <div class="intro-content">
+                    <h1>Hey there, fellow travelers!</h1>
+                    <p>
+                        Welcome to <b>ParadiseFound PH</b>, your ultimate travel buddy for exploring the stunning beaches and hidden gems of the Philippines! 🌴✨ Join me as we dive into the crystal-clear waters of <b>Saud Beach</b>, feel the vibrant energy of <b>Boracay</b>, and ride the epic waves of <b>Siargao Island</b>. Each spot has a story to tell, and I’m here to share it with you!
+                    </p>
+                    <p>
+                        Whether you’re a laid-back beach bum, an adrenaline junkie, or just someone chasing sunsets, this is your guide to turning travel dreams into reality. Stick around for insider tips, travel hacks, and some must-visit spots that you don’t want to miss. Ready? Let’s hit the road and discover the magic of these tropical paradises together! 🎥✈️
+                    </p>
+                </div>
+                <div class="intro-img">
+                    <img src="img/intro-img.jpg" alt="saud-beach-intro-img">
+                </div>
+            </div>
+        </section>
+
+        <hr class="styled-hr">
+        
+        <!--API's-->
+    <section class="API" >
+        <div class="location" id="first-location" >
+            <div class="location-wrapper">
+                <div class="loc-description">
+                    <h1>1. Saud Beach, Pagudpud, Ilocos Norte</h1>
+                    <p>Ahead of the curve in northern Luzon lies Saud Beach, affectionately called the "Boracay of the North." This 2-kilometer stretch of paradise offers an unforgettable experience.</p>
+                    <p>Imagine walking on powdery white sand that feels like silk between your toes, surrounded by crystal-clear waters so blue they seem almost artificial. The beach caters to all tastes – whether you're looking to soak up the sun, take a refreshing dip, or catch some gnarly waves.</p>
+                    <p>During low tide, a small island appears just offshore, adding an extra layer of magic to your visit. The laid-back vibe and proximity to the Cape Bojeador Lighthouse make Saud Beach a must-visit destination.</p>
+                    <p>Whether you're a beach bum looking for relaxation or an adventure seeker eager to try new activities, Saud Beach has something for everyone. So pack your bags, grab your sunscreen, and get ready to fall head over heels in love with one of the Philippines' most incredible coastal gems!</p>
+                </div>
+                <div class="map">
+                    <p>Use this map to find Saud Beach in Pagudpud, Ilocos Norte!</p>
+                    <div id="map1" style="height: 300px; width: 100%;"></div>
+                </div>
+            </div>
+            <div class="youtube-playlist">
+                <div class="playlist-container" id="playlistContainer"></div>
+            </div>
+        </div>
+
+        <hr class="styled-hr">
+
+
+        <div class="location">
+            <div class="location-wrapper">
+                <div class="loc-description">
+                    <h1>2. White Beach, Boracay, Aklan</h1>
+                    <p>Boracay Island's crown jewel, White Beach, is a tropical paradise that needs no introduction. This four-kilometer stretch of powdery white sand is nestled between crystal-clear waters so blue they seem almost otherworldly.</p>
+                    <p>Imagine waking up to sunrises that paint the sky in hues of orange and purple, then spending your day lounging on pristine beaches, snorkeling in vibrant waters, or dancing the night away in one of the world's best party destinations.</p>
+                    <p>White Beach offers something for every taste – from luxury resorts to budget-friendly accommodations, fine dining to local cuisine, and relaxation to non-stop adventure. It's the perfect blend of natural beauty and vibrant nightlife.</p>
+                    <p>Whether you're looking to unwind, party hard, or simply experience island life at its finest, White Beach Boracay has got you covered. So pack your bags, grab your sunscreen, and get ready to experience one of the world's most iconic tropical destinations!</p>
+                </div>
+                <div class="map">
+                    <p>Use this map to find Boracay Island in Aklan!</p>
+                    <div id="map2" style="height: 300px; width: 100%;"></div>
+                </div>
+            </div>
+            <div class="youtube-playlist">
+                <div class="playlist-container" id="playlistContainer"></div>
+            </div>
+        </div>
+
+        <hr class="styled-hr">
     
-        <div class="hotel-container">
-            <h1>FIND YOUR HOTEL</h1>
+        <div class="location">
+            <div class="location-wrapper">
+                <div class="loc-description">
+                    <h1>3. Alegria Beach, Siargao Island, Surigao del Norte</h1>
+                    <p>Ahead of the curve in eastern Mindanao lies Alegria Beach, one of Siargao Island's hidden gems. This pristine stretch of coastline offers an unforgettable experience for surfers and beach lovers alike.</p>
+                    <p>Imagine riding the waves on your board or simply soaking up the sun on powdery white sand surrounded by crystal-clear waters. The laid-back vibe and stunning natural beauty make Alegria Beach a must-visit destination.</p>
+                    <p>The beach caters to all tastes – whether you're looking to catch some gnarly waves, take a refreshing dip, or simply relax in paradise. It's the perfect spot to unwind and connect with nature.</p>
+                    <p>Whether you're a thrill-seeker looking for adventure or simply someone who appreciates natural beauty, Alegria Beach has something for everyone. So pack your bags, grab your sunscreen, and get ready to fall head over heels in love with one of Siargao Island's most incredible coastal gems!</p>
+                </div>
+                <div class="map">
+                    <p>Use this map to find Siargao Island in Surigao del Norte!</p>
+                    <div id="map3" style="height: 300px; width: 100%;"></div>
+                </div>
+            </div>
+            <div class="youtube-playlist">
+                <div class="playlist-container" id="playlistContainer"></div>
+            </div>
         </div>
 
-
+        <hr class="styled-hr">
+        
+        <script>
+            function initMap() {
+                // Map 1: Pagudpud - Saud Beach
+                const saudBeach = { lat: 18.581338241862877, lng: 120.78399814011799 };
+                const map1 = new google.maps.Map(document.getElementById("map1"), {
+                    zoom: 17,
+                    center: saudBeach,
+                });
+                const saudBeachMarker = new google.maps.Marker({
+                    position: saudBeach,
+                    map: map1,
+                    title: "Saud Beach, Pagudpud, Ilocos Norte",
+                });
+                const saudBeachInfoWindow = new google.maps.InfoWindow({
+                    content: "<h3>Saud Beach</h3><p>A peaceful and beautiful beach in Pagudpud, Ilocos Norte.</p>",
+                });
+                saudBeachMarker.addListener("click", () => saudBeachInfoWindow.open(map1, saudBeachMarker));
+        
+                // Map 2: Boracay
+                const boracay = { lat: 11.953199339363135, lng: 121.92969977332407 };
+                const map2 = new google.maps.Map(document.getElementById("map2"), {
+                    zoom: 17,
+                    center: boracay,
+                });
+                const boracayMarker = new google.maps.Marker({
+                    position: boracay,
+                    map: map2,
+                    title: "White Beach, Boracay, Aklan",
+                });
+                const boracayInfoWindow = new google.maps.InfoWindow({
+                    content: "<h3>Boracay</h3><p>Famous for its white sandy beaches and vibrant nightlife.</p>",
+                });
+                boracayMarker.addListener("click", () => boracayInfoWindow.open(map2, boracayMarker));
+        
+                // Map 3: Siargao Island
+                const siargao = { lat: 10.0553773551873, lng: 126.07119590231676 }; // Coordinates for Siargao Island
+                const map3 = new google.maps.Map(document.getElementById("map3"), {
+                    zoom: 17,
+                    center: siargao,
+                });
+                const siargaoMarker = new google.maps.Marker({
+                    position: siargao,
+                    map: map3,
+                    title: "Siargao Island, Surigao del Norte, Alegria Beach, 333C+VC7, Santa Monica, Surigao del Norte",
+                });
+                const siargaoInfoWindow = new google.maps.InfoWindow({
+                    content: "<h3>Siargao Island</h3><p>Known as the Surfing Capital of the Philippines.</p>",
+                });
+                siargaoMarker.addListener("click", () => siargaoInfoWindow.open(map3, siargaoMarker));
+            }
+        </script>
 
     </section>
 
+
+            <!-- Add your Google Maps API key -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYPsjWInN7r_EBcV7tQj871BKts8nbhhM&callback=initMap"></script>
+            
+
+<!--Flight   
+        <div class="flight-container">
+            <header>
+                <h1>Flight Booking</h1>
+            </header>
+
+            <main>
+                <section id="search-section">
+                    <h2>Search for Flights</h2>
+                    <form id="flight-search-form">
+                        <label for="origin">Origin:</label>
+                        <input type="text" id="origin" name="origin" placeholder="e.g., JFK" required>
+                        
+                        <label for="destination">Destination:</label>
+                        <input type="text" id="destination" name="destination" placeholder="e.g., LAX" required>
+                        
+                        <label for="departure-date">Departure Date:</label>
+                        <input type="date" id="departure-date" name="departure-date" required>
+                        
+                        <label for="return-date">Return Date:</label>
+                        <input type="date" id="return-date" name="return-date">
+                        
+                        <button type="submit">Search Flights</button>
+                    </form>
+                </section>
+            
+            </main>
+            <script src="script.js"></script>
+        </div>
+    </section>
+-->
+
+    <div class="contact-container">
+        <div class="contact-item1">
+            <h3>Subscribe to our newsletter to get exclusive updates and offers!</h3>
+            <div class="email-input-container">
+                <input type="email" name="user_email" class="email-input" placeholder="Enter your email" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </div>
+        </div>
+        <div class="contact-item2">
+            <h3>Phone</h3>
+            <p>(+63) 123-456-7890</p>
+            <div class="quick-nav">
+                <a href="index.html">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Partners</a>
+                <a href="#">Services</a>
+                <a href="#">About</a>
+            </div>
+            </ul>
+        </div>
+        <div class="contact-item3">
+            <div class="contact-social-links">
+                <a><ion-icon name="logo-facebook"></ion-icon></a>
+                <a><ion-icon name="logo-discord"></ion-icon></a>
+                <a><ion-icon name="logo-facebook"></ion-icon></a>
+                <a><ion-icon name="logo-instagram"></ion-icon></a>
+                <a><ion-icon name="logo-paypal"></ion-icon></a>
+                <a><ion-icon name="logo-reddit"></ion-icon></a>
+                <a><ion-icon name="logo-twitter"></ion-icon></a>
+                <a><ion-icon name="logo-youtube"></ion-icon></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        ©2024 www.ParadiseFoundPH.com
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaButton = document.querySelector('.cta-button');
+            
+            ctaButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default button behavior
+                
+                const targetElement = document.getElementById('first-location'); // Add this ID to your first location container
+                targetElement.scrollIntoView({behavior: 'smooth'});
+            });
+        });
+        </script>
+        
     </body>
 </html>
