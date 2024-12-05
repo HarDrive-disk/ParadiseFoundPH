@@ -86,11 +86,19 @@
                 </div>
                 <div class="map">
                     <p>Use this map to find Saud Beach in Pagudpud, Ilocos Norte!</p>
-                    <div id="map1" style="height: 300px; width: 100%;"></div>
+                    <div id="map1" style="height: 500px; width: 100%;"></div>
+                    <div id="placesApiDiv1" class="places-api"></div>
+                    <!-- Places API output for Saud -->
                 </div>
             </div>
             <div class="youtube-playlist">
-                <div class="playlist-container" id="playlistContainer"></div>
+                <div class="playlist-container1" id="playlistContainer1"></div>
+            </div>
+
+            <div class="Routes-API">
+                <h1>How to get there?</h1>
+                <p>Check out this map to get a picture of how to reach Saud Beach, Pagudpud, Ilocos Norte!</p>
+                <div id="mapRoutes1" style="height: 500px; width: 100%;"></div> <!-- Second map for routes -->
             </div>
         </div>
 
@@ -107,12 +115,20 @@
                     <p>Whether you're looking to unwind, party hard, or simply experience island life at its finest, White Beach Boracay has got you covered. So pack your bags, grab your sunscreen, and get ready to experience one of the world's most iconic tropical destinations!</p>
                 </div>
                 <div class="map">
-                    <p>Use this map to find Boracay Island in Aklan!</p>
-                    <div id="map2" style="height: 300px; width: 100%;"></div>
+                    <p>Use this map to find White Beach in Boracay, Aklan!</p>
+                    <div id="map2" style="height: 500px; width: 100%;"></div>
+                    <div id="placesApiDiv2" class="places-api"></div>
+                        <!-- Places API output for Boracay -->
+                    </div>
                 </div>
             </div>
             <div class="youtube-playlist">
-                <div class="playlist-container" id="playlistContainer"></div>
+                <div class="playlist-container2" id="playlistContainer2"></div>
+            </div>
+            <div class="Routes-API">
+                <h1>How to get there?</h1>
+                <p>Check out this map to get a picture of how to reach White Beach, Boracay, Aklan!</p>
+                <div id="mapRoutes2" style="height: 500px; width: 100%;"></div> <!-- Second map for routes -->
             </div>
         </div>
 
@@ -128,12 +144,20 @@
                     <p>Whether you're a thrill-seeker looking for adventure or simply someone who appreciates natural beauty, Alegria Beach has something for everyone. So pack your bags, grab your sunscreen, and get ready to fall head over heels in love with one of Siargao Island's most incredible coastal gems!</p>
                 </div>
                 <div class="map">
-                    <p>Use this map to find Siargao Island in Surigao del Norte!</p>
-                    <div id="map3" style="height: 300px; width: 100%;"></div>
+                    <p>Use this map to find Alegria Beach in Siargao Island, Surigao del Norte!</p>
+                    <div id="map3" style="height: 500px; width: 100%;"></div>
+                    <div id="placesApiDiv3" class="places-api"></div>
+                        <!-- Places API output for Siargao -->
+                    </div>
                 </div>
             </div>
             <div class="youtube-playlist">
-                <div class="playlist-container" id="playlistContainer"></div>
+                <div class="playlist-container3" id="playlistContainer3"></div>
+            </div>
+            <div class="Routes-API">
+                <h1>How to get there?</h1>
+                <p>Check out this map to get a picture of how to reach Alegria Beach, Siargao Island, Surigao del Norte!</p>
+                <div id="mapRoutes3" style="height: 500px; width: 100%;"></div> <!-- Second map for routes -->
             </div>
         </div>
 
@@ -141,7 +165,61 @@
         
         <script>
             function initMap() {
-                // Map 1: Pagudpud - Saud Beach
+                // Shared function to add Places API to a map
+                function addPlaces(map, location, radius, types, divId) {
+                    const placesService = new google.maps.places.PlacesService(map);
+                    const request = {
+                        location,
+                        radius, // Search radius in meters
+                        type: types, // Array of place types to search
+                    };
+
+                    const placesDiv = document.getElementById(divId);
+                    if (placesDiv) placesDiv.innerHTML = ''; // Clear previous content
+
+                    placesService.nearbySearch(request, (results, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            results.forEach((place) => {
+                                if (place.geometry && place.geometry.location) {
+                                    // Add marker to map
+                                    const placeMarker = new google.maps.Marker({
+                                        position: place.geometry.location,
+                                        map,
+                                        title: place.name,
+                                        icon: {
+                                            url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Blue marker
+                                        },
+                                    });
+
+                                    const placeInfoWindow = new google.maps.InfoWindow({
+                                        content: `<h4>${place.name}</h4><p>${place.vicinity || "No address available"}</p>`,
+                                    });
+
+                                    placeMarker.addListener("click", () => {
+                                        placeInfoWindow.open(map, placeMarker);
+                                    });
+
+                                    // Add to textual output
+                                    if (placesDiv) {
+                                        const placeItem = document.createElement('div');
+                                        placeItem.classList.add('place-item');
+                                        placeItem.innerHTML = `
+                                            <h4>${place.name}</h4>
+                                            <p>${place.vicinity || "No address available"}</p>
+                                        `;
+                                        placesDiv.appendChild(placeItem);
+                                    }
+                                }
+                            });
+                        } else {
+                            console.error("Places API error:", status);
+                            if (placesDiv) placesDiv.textContent = "No nearby places found or an error occurred.";
+                        }
+                    });
+                }
+
+
+                // Map 1: Saud Beach
                 const saudBeach = { lat: 18.581338241862877, lng: 120.78399814011799 };
                 const map1 = new google.maps.Map(document.getElementById("map1"), {
                     zoom: 17,
@@ -152,11 +230,13 @@
                     map: map1,
                     title: "Saud Beach, Pagudpud, Ilocos Norte",
                 });
-                const saudBeachInfoWindow = new google.maps.InfoWindow({
-                    content: "<h3>Saud Beach</h3><p>A peaceful and beautiful beach in Pagudpud, Ilocos Norte.</p>",
+                saudBeachMarker.addListener("click", () => {
+                    new google.maps.InfoWindow({
+                        content: "<h3>Saud Beach</h3><p>A peaceful and beautiful beach in Pagudpud, Ilocos Norte.</p>",
+                    }).open(map1, saudBeachMarker);
                 });
-                saudBeachMarker.addListener("click", () => saudBeachInfoWindow.open(map1, saudBeachMarker));
-        
+                addPlaces(map1, saudBeach, 1000, ["restaurant", "lodging", "tourist_attraction"], "placesApiDiv1");
+
                 // Map 2: Boracay
                 const boracay = { lat: 11.953199339363135, lng: 121.92969977332407 };
                 const map2 = new google.maps.Map(document.getElementById("map2"), {
@@ -168,13 +248,15 @@
                     map: map2,
                     title: "White Beach, Boracay, Aklan",
                 });
-                const boracayInfoWindow = new google.maps.InfoWindow({
-                    content: "<h3>Boracay</h3><p>Famous for its white sandy beaches and vibrant nightlife.</p>",
+                boracayMarker.addListener("click", () => {
+                    new google.maps.InfoWindow({
+                        content: "<h3>White Beach</h3><p>Famous for its white sandy beaches and vibrant nightlife.</p>",
+                    }).open(map2, boracayMarker);
                 });
-                boracayMarker.addListener("click", () => boracayInfoWindow.open(map2, boracayMarker));
-        
-                // Map 3: Siargao Island
-                const siargao = { lat: 10.0553773551873, lng: 126.07119590231676 }; // Coordinates for Siargao Island
+                addPlaces(map2, boracay, 1000, ["restaurant", "bar", "night_club"], "placesApiDiv2");
+
+                // Map 3: Siargao
+                const siargao = { lat: 10.0553773551873, lng: 126.07119590231676 };
                 const map3 = new google.maps.Map(document.getElementById("map3"), {
                     zoom: 17,
                     center: siargao,
@@ -182,12 +264,14 @@
                 const siargaoMarker = new google.maps.Marker({
                     position: siargao,
                     map: map3,
-                    title: "Siargao Island, Surigao del Norte, Alegria Beach, 333C+VC7, Santa Monica, Surigao del Norte",
+                    title: "Alegria Beach, Siargao Island, Surigao del Norte",
                 });
-                const siargaoInfoWindow = new google.maps.InfoWindow({
-                    content: "<h3>Siargao Island</h3><p>Known as the Surfing Capital of the Philippines.</p>",
+                siargaoMarker.addListener("click", () => {
+                    new google.maps.InfoWindow({
+                        content: "<h3>Alegria Beach</h3><p>Known as a serene and pristine beach in Siargao.</p>",
+                    }).open(map3, siargaoMarker);
                 });
-                siargaoMarker.addListener("click", () => siargaoInfoWindow.open(map3, siargaoMarker));
+                addPlaces(map3, siargao, 1000, ["tourist_attraction", "restaurant", "lodging"], "placesApiDiv3");
             }
         </script>
 
@@ -195,40 +279,7 @@
 
 
             <!-- Add your Google Maps API key -->
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYPsjWInN7r_EBcV7tQj871BKts8nbhhM&callback=initMap"></script>
-            
-
-<!--Flight   
-        <div class="flight-container">
-            <header>
-                <h1>Flight Booking</h1>
-            </header>
-
-            <main>
-                <section id="search-section">
-                    <h2>Search for Flights</h2>
-                    <form id="flight-search-form">
-                        <label for="origin">Origin:</label>
-                        <input type="text" id="origin" name="origin" placeholder="e.g., JFK" required>
-                        
-                        <label for="destination">Destination:</label>
-                        <input type="text" id="destination" name="destination" placeholder="e.g., LAX" required>
-                        
-                        <label for="departure-date">Departure Date:</label>
-                        <input type="date" id="departure-date" name="departure-date" required>
-                        
-                        <label for="return-date">Return Date:</label>
-                        <input type="date" id="return-date" name="return-date">
-                        
-                        <button type="submit">Search Flights</button>
-                    </form>
-                </section>
-            
-            </main>
-            <script src="script.js"></script>
-        </div>
-    </section>
--->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYPsjWInN7r_EBcV7tQj871BKts8nbhhM&libraries=places&callback=initMap"></script>            
 
     <div class="contact-container">
         <div class="contact-item1">
